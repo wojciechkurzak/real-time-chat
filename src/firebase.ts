@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app'
 import { getAuth } from 'firebase/auth'
-import { getFirestore, getDocs, collection } from 'firebase/firestore'
+import { getFirestore } from 'firebase/firestore'
 
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_API_KEY,
@@ -17,11 +17,3 @@ initializeApp(firebaseConfig)
 
 export const db = getFirestore()
 export const auth = getAuth()
-
-export async function getData(db: any, type: string) {
-    const dataCol = collection(db, type);
-    const dataSnapshot = await getDocs(dataCol);
-    const dataList = dataSnapshot.docs.map(doc => doc.data());
-    return dataList;
-}
-
