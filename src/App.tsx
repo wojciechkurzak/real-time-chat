@@ -1,16 +1,13 @@
-import { useState } from 'react';
+import AuthProvider from './components/utils/AuthProvider'
+import { Route, Routes, BrowserRouter } from 'react-router-dom'
+import HomePage from './pages/HomePage'
+import LoginPage from './pages/LoginPage'
+import RegisterPage from './pages/RegisterPage'
+import ProtectedRoute from './components/utils/ProtectedRoute'
 import './firebase'
-import './App.scss';
-import AuthProvider from './components/utils/AuthProvider';
-import { Route, Routes, BrowserRouter } from 'react-router-dom';
-import HomePage from './pages/HomePage';
-import LoginPage from './pages/LoginPage';
-import RegisterPage from './pages/RegisterPage';
-import ProtectedRoute from './components/utils/ProtectedRoute';
+import './App.scss'
 
 function App() {
-    const [user, setUser] = useState(null)
-
     return(
         <AuthProvider>
             <BrowserRouter>
