@@ -3,19 +3,22 @@ import { loginInputs } from './LoginInputs'
 import { signInWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../../firebase'
 import Input from '../utils/Input'
+import { useNavigate } from 'react-router-dom'
 
 
-const Login = ({setUser}: any) => {
+const Login = () => {
     const [values, setValues] = useState<{[key: string]: any}>({
         email:'',
         password: '',
         error: false,
     })
 
+    const navigate = useNavigate()
+
     const signIn = (): void => {
         signInWithEmailAndPassword(auth, values.email, values.password)
             .then(userCred => {
-                setUser(userCred)
+                navigate('/')
             })
             .catch(err => {
                 setValues({
