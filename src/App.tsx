@@ -5,7 +5,7 @@ import LoginPage from './pages/LoginPage'
 import RegisterPage from './pages/RegisterPage'
 import ProtectedRoute from './components/utils/ProtectedRoute'
 import './firebase'
-import './App.scss'
+import './styles/App.scss'
 
 function App() {
     return(
