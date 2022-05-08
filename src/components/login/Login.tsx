@@ -4,6 +4,9 @@ import { signInWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../../firebase'
 import FormInput from '../utils/FormInput'
 import { useNavigate } from 'react-router-dom'
+import '../../styles/Login.scss'
+import FormButton from '../utils/FormButton'
+
 
 const Login = () => {
     const [values, setValues] = useState<{[key: string]: any}>({
@@ -45,7 +48,7 @@ const Login = () => {
             <form onSubmit={handleSubmit}>
                 {values.error && <span>Incorrect email or password</span>}
                 {loginInputs.map((input) => <FormInput key={input.id} value={values[input.name]} onChange={handleChange} {...input} />)}
-                <button>Login</button>
+                <FormButton>Login</FormButton>
             </form>
         </div>
     )
