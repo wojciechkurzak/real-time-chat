@@ -6,6 +6,7 @@ import FormInput from '../utils/FormInput'
 import { useNavigate } from 'react-router-dom'
 import '../../styles/Login.scss'
 import FormButton from '../utils/FormButton'
+import RegisterRedirect from './RegisterRedirect'
 
 
 const Login = () => {
@@ -49,6 +50,7 @@ const Login = () => {
                 {values.error && <span>Incorrect email or password</span>}
                 {loginInputs.map((input) => <FormInput key={input.id} value={values[input.name]} onChange={handleChange} {...input} />)}
                 <FormButton>Login</FormButton>
+                <RegisterRedirect>Create new account</RegisterRedirect>
             </form>
         </div>
     )
