@@ -2,9 +2,8 @@ import { BaseSyntheticEvent, useState } from 'react'
 import { loginInputs } from './LoginInputs'
 import { signInWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../../firebase'
-import Input from '../utils/Input'
+import FormInput from '../utils/FormInput'
 import { useNavigate } from 'react-router-dom'
-
 
 const Login = () => {
     const [values, setValues] = useState<{[key: string]: any}>({
@@ -42,11 +41,13 @@ const Login = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            {values.error && <span>Incorrect email or password</span>}
-            {loginInputs.map((input) => <Input key={input.id} value={values[input.name]} onChange={handleChange} {...input} />)}
-            <button>Login</button>
-        </form>
+        <div className='loginPanel'>
+            <form onSubmit={handleSubmit}>
+                {values.error && <span>Incorrect email or password</span>}
+                {loginInputs.map((input) => <FormInput key={input.id} value={values[input.name]} onChange={handleChange} {...input} />)}
+                <button>Login</button>
+            </form>
+        </div>
     )
 }
 
