@@ -11,7 +11,5 @@ export interface RegisterValidator {
     name: string,
     type: string,
     label: string,
-    required: boolean,
-    pattern: string,
     errorMessage: string,
 }

@@ -1,12 +1,12 @@
 import React from 'react'
 import '../../styles/FormInput.scss'
 
-const Input = ({id, label, errorMessage, ...props}: any) => {
+const Input = ({id, label, errorMessage, error, ...props}: any) => {
     return (
         <div className='formInput'>
             <label>{label}</label>
             <input {...props}/>
-            <span>{errorMessage}</span>
+            <span>{error && errorMessage}</span>
         </div>
     )
 }
