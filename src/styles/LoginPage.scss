@@ -5,20 +5,4 @@
     position: relative;
     height: 100vh;
     overflow: hidden;
-
-    .imageTop{
-        width: 400px;
-        position: absolute;
-        top: -40px;
-        left: -110px;
-        z-index: -1;
-    }
-
-    .imageBottom{
-        width: 400px;
-        position: absolute;
-        bottom: -100px;
-        right: -50px;
-        z-index: -1;
-    }
 }

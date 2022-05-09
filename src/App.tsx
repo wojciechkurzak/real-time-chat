@@ -6,6 +6,7 @@ import RegisterPage from './pages/RegisterPage'
 import ProtectedRoute from './components/utils/ProtectedRoute'
 import './firebase'
 import './styles/App.scss'
+import ErrorPage from './pages/ErrorPage'
 
 function App() {
     return(
@@ -22,6 +23,7 @@ function App() {
                             </ProtectedRoute>
                         }
                     />
+                    <Route path='*' element={<ErrorPage />}/>
                 </Routes>
             </BrowserRouter>
         </AuthProvider>
