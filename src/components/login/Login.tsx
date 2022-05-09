@@ -4,7 +4,7 @@ import { signInWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../../firebase'
 import FormInput from '../utils/FormInput'
 import { useNavigate } from 'react-router-dom'
-import '../../styles/Login.scss'
+import '../../styles/FormPanel.scss'
 import FormButton from '../utils/FormButton'
 import RegisterRedirect from './RegisterRedirect'
 
@@ -45,7 +45,7 @@ const Login = () => {
     }
 
     return (
-        <div className='loginPanel'>
+        <div className='formPanel'>
             <form onSubmit={handleSubmit}>
                 {values.error && <span>Incorrect email or password</span>}
                 {loginInputs.map((input) => <FormInput key={input.id} value={values[input.name]} onChange={handleChange} {...input} />)}
