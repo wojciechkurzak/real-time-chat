@@ -19,5 +19,17 @@
         padding: 10px 8px;
         border-radius: 6px;
         border: none;
+
+        &:focus{
+            border: none;
+            box-shadow: none;
+        }
+    }
+
+    span{
+        margin-top: 4px;
+        color: rgba(255,0,0,0.85) !important; 
+        font-size: 14px;
+        text-align: left;
     }
 }
