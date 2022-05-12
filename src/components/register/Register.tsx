@@ -36,20 +36,19 @@ const Register = () => {
             })
             .catch(err => {
                 setValues({
-                    ...values,
-                email: {
-                    value: '',
-                    error: false
-                },
-                password: {
-                    value: '',
-                    error: false
-                },
-                confirmPassword: {
-                    value: '',
-                    error: false
-                },
-                error: true
+                    email: {
+                        value: '',
+                        error: false
+                    },
+                    password: {
+                        value: '',
+                        error: false
+                    },
+                    confirmPassword: {
+                        value: '',
+                        error: false
+                    },
+                    error: true
                 })
             })
     }
@@ -74,7 +73,6 @@ const Register = () => {
         }
         else{
             setValues({
-                ...values,
                 email: {
                     ...values.email,
                     error: !emailRegex.test(values.email.value)
