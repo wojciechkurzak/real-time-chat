@@ -31,8 +31,7 @@ const Register = () => {
     const signUp = (): void => {
         createUserWithEmailAndPassword(auth, values.email.value, values.password.value)
             .then(userCred => {
-                signInWithEmailAndPassword(auth, values.email.value, values.password.value)
-                navigate('/')
+                navigate('/login')
             })
             .catch(err => {
                 setValues({
