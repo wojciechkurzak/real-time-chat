@@ -4,15 +4,15 @@ export const loginInputs: Array<LoginValidator> = [
     {
         id: 1,
         name: 'email',
-        type: 'email',
+        type: 'text',
         label: 'Email',
-        required: true,
+        errorMessage: 'Email cannot be empty'
     },
     {
         id: 2,
         name: 'password',
         type: 'password',
         label: 'Password',
-        required: true,
+        errorMessage: 'Password cannot be empty'
     }
 ]

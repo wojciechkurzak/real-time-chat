@@ -3,7 +3,7 @@ export interface LoginValidator {
     name: string,
     type: string,
     label: string,
-    required: boolean,
+    errorMessage: string,
 }
 
 export interface RegisterValidator {
