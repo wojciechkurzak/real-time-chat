@@ -1,6 +1,6 @@
 import { BaseSyntheticEvent, useState } from 'react'
 import { registerInputs } from './RegisterInputs'
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth'
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
 import { auth } from '../../firebase'
 import FormInput from '../utils/FormInput'
 import { useNavigate } from 'react-router-dom'
@@ -12,6 +12,10 @@ import FormRedirect from '../utils/FormRedirect'
 const Register = () => {
     const [values, setValues] = useState<{[key: string]: any}>({
         email:{
+            value: '',
+            error: false,
+        },
+        nickname:{
             value: '',
             error: false,
         },
@@ -31,11 +35,18 @@ const Register = () => {
     const signUp = (): void => {
         createUserWithEmailAndPassword(auth, values.email.value, values.password.value)
             .then(userCred => {
+                updateProfile(userCred.user, {
+                    displayName: values.nickname.value
+                })
                 navigate('/login')
             })
             .catch(err => {
                 setValues({
                     email: {
+                        value: '',
+                        error: false
+                    },
+                    nickname: {
                         value: '',
                         error: false
                     },
@@ -65,9 +76,13 @@ const Register = () => {
     const handleSubmit = (e: BaseSyntheticEvent): void => {
         e.preventDefault()
         const emailRegex =  /[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,8}/
+        const nicknameRegex = /^[a-zA-Z0-9]{3,16}$/
         const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,}$/
 
-        if(emailRegex.test(values.email.value) && passwordRegex.test(values.password.value) && values.confirmPassword.value === values.password.value){
+        if(emailRegex.test(values.email.value) 
+            && passwordRegex.test(values.password.value) 
+            && values.confirmPassword.value === values.password.value
+            && nicknameRegex.test(values.nickname.value)){
             signUp()
         }
         else{
@@ -75,6 +90,10 @@ const Register = () => {
                 email: {
                     ...values.email,
                     error: !emailRegex.test(values.email.value)
+                },
+                nickname: {
+                    ...values.nickname,
+                    error: !nicknameRegex.test(values.nickname.value)
                 },
                 password: {
                     ...values.password,
