@@ -1,5 +1,7 @@
 .homePage{
     height: 100vh;
+    overflow-x: hidden;
+    position: relative;
 
     .chatBox{
         position: relative;

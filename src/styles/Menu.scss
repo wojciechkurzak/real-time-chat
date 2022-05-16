@@ -1,0 +1,13 @@
+.menu{
+    position: absolute;
+    top: 0;
+    left: 100%;
+    width: 100vw;
+    height: 100vh;
+    background-color: #111;
+    transition: transform .3s;
+}
+
+.menuOut{
+    transform: translateX(-100%);
+}
