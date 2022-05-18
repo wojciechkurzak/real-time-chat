@@ -1,4 +1,7 @@
 .menu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: absolute;
     top: 0;
     left: 100%;
@@ -16,6 +19,15 @@
 
         img{
             width: 100%;
+        }
+    }
+
+    ul{
+        list-style-type: none;
+
+        li{
+            color: #fff;
+            font-size: 32px;
         }
     }
 }
