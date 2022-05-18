@@ -15,7 +15,7 @@ const HomePage = () => {
                 <Chat />
                 <ChatInput />
             </div>
-            <Menu slide={slide}/>
+            <Menu slide={slide} setSlide={setSlide}/>
         </div>
     )
 }
