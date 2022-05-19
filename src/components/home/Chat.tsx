@@ -9,36 +9,28 @@ const Chat = () => {
     const [messages, setMessages] = useState(null)
 
     useEffect(() => {
-        let unsubscribeUsers: Function
-        let unsubscribeMessages: Function
-
-        const getData = async () => {
-            let usersData : Array<Object> = []
-            let messagesData : Array<Object> = []
+        let usersData : Array<Object> = []
+        let messagesData : Array<Object> = []
     
-    
-            unsubscribeUsers = await onSnapshot(collection(db, 'users'), (snapshot) => {
-                snapshot.forEach((user) => {
-                    usersData = {
-                        ...usersData,
+        let unsubscribeUsers: Function = onSnapshot(collection(db, 'users'), (snapshot) => {
+            snapshot.forEach((user) => {
+                usersData = {
+                    ...usersData,
                         [user.id]: user.data()
-                    }
-                })
-                setUsers(usersData)
+                }
             })
+            setUsers(usersData)
+        })
     
-            unsubscribeMessages = await onSnapshot(collection(db, 'messages'), (snapshot) => {
-                snapshot.forEach(message => {
-                    messagesData = {
-                        ...messagesData,
-                        [message.id]: message.data()
-                    }
-                })
-                setMessages(messagesData)
+        let unsubscribeMessages: Function = onSnapshot(collection(db, 'messages'), (snapshot) => {
+            snapshot.forEach(message => {
+                messagesData = {
+                    ...messagesData,
+                    [message.id]: message.data()
+                }
             })
-        }
-
-        getData()
+            setMessages(messagesData)
+        })
 
         return () => {
             unsubscribeUsers()
