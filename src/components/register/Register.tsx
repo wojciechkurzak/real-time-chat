@@ -1,7 +1,8 @@
 import { BaseSyntheticEvent, useState } from 'react'
 import { registerInputs } from './RegisterInputs'
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
-import { auth } from '../../firebase'
+import { doc, setDoc } from "firebase/firestore"; 
+import { auth, db } from '../../firebase'
 import FormInput from '../utils/FormInput'
 import { useNavigate } from 'react-router-dom'
 import '../../styles/FormPanel.scss'
@@ -38,7 +39,11 @@ const Register = () => {
                 updateProfile(userCred.user, {
                     displayName: values.nickname.value
                 })
-                navigate('/login')
+                setDoc(doc(db, 'users', userCred.user.uid), {
+                    displayName: values.nickname.value,
+                    imageURL: ''
+                });
+                navigate('/')
             })
             .catch(err => {
                 setValues({

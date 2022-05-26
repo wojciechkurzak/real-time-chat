@@ -40,7 +40,7 @@ const Chat = () => {
 
     return (
         <div className='chat'>
-            {(users || messages) !== null ? Object.entries(messages).map((message: Array<any>) => {
+            {(users && messages) !== null ? Object.entries(messages).map((message: Array<any>) => {
                 return <ChatMessage 
                             key={message[0]}
                             displayName={users[message[1].uid].displayName}
