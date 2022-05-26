@@ -2,13 +2,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 100%;
     width: 100vw;
     height: 100vh;
     background-color: #111;
     transition: transform .3s;
+    z-index: 2;
 
     .menuClose{
         position: absolute;
