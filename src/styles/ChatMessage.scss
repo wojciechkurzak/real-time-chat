@@ -1,0 +1,32 @@
+.message{
+    display: flex;
+    margin-bottom: 12px;
+    overflow: hidden;
+
+    img{
+        width: 50px;
+        height: 100%;
+        margin-right: 10px;
+    }
+
+    img{
+        border-radius: 50%;
+    }
+
+    .text{
+        p:nth-child(1){
+            margin-top: 4px;
+            color: #fff;
+        }
+
+        p:nth-child(2){
+            margin-top: 4px;
+            color: #ccc;
+            word-break: break-word;
+        }
+    }
+
+    &:nth-last-child(1){
+        margin-bottom: 0;
+    }
+}
