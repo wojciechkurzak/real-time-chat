@@ -35,15 +35,23 @@ const Register = () => {
 
     const signUp = (): void => {
         createUserWithEmailAndPassword(auth, values.email.value, values.password.value)
+            .then(async userCred => {
+                await setDoc(doc(db, 'users', userCred.user.uid), {
+                    displayName: values.nickname.value,
+                    imageURL: ''
+                })
+                return userCred
+            })
             .then(userCred => {
                 updateProfile(userCred.user, {
                     displayName: values.nickname.value
                 })
-                setDoc(doc(db, 'users', userCred.user.uid), {
-                    displayName: values.nickname.value,
-                    imageURL: ''
-                });
-                navigate('/')
+                .then(() => {
+                    navigate('/')
+                })
+                .catch(err => {
+                    throw err
+                })
             })
             .catch(err => {
                 setValues({

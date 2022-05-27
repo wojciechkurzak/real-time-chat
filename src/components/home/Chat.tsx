@@ -1,43 +1,7 @@
-import React, { useEffect, useState } from 'react'
-import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
-import { db } from '../../firebase'
-import '../../styles/Chat.scss'
 import ChatMessage from './ChatMessage'
+import '../../styles/Chat.scss'
 
-const Chat = () => {
-    const [users, setUsers] = useState(null)
-    const [messages, setMessages] = useState(null)
-
-    useEffect(() => {
-        let usersData : Array<Object> = []
-        let messagesData : Array<Object> = []
-    
-        let unsubscribeUsers: Function = onSnapshot(collection(db, 'users'), (snapshot) => {
-            snapshot.forEach((user) => {
-                usersData = {
-                    ...usersData,
-                        [user.id]: user.data()
-                }
-            })
-            setUsers(usersData)
-        })
-    
-        let unsubscribeMessages: Function = onSnapshot(query(collection(db, 'messages'), orderBy('createdAt')), (snapshot) => {
-            snapshot.forEach(message => {
-                messagesData = {
-                    ...messagesData,
-                    [message.id]: message.data()
-                }
-            })
-            setMessages(messagesData)
-        })
-
-        return () => {
-            unsubscribeUsers()
-            unsubscribeMessages()
-        }
-    }, [])
-
+const Chat = ({users, messages}: any) => {
     return (
         <div className='chat'>
             {(users && messages) !== null ? Object.entries(messages).map((message: Array<any>) => {
