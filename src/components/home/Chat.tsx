@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { collection, onSnapshot } from 'firebase/firestore'
+import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
 import { db } from '../../firebase'
 import '../../styles/Chat.scss'
 import ChatMessage from './ChatMessage'
@@ -22,7 +22,7 @@ const Chat = () => {
             setUsers(usersData)
         })
     
-        let unsubscribeMessages: Function = onSnapshot(collection(db, 'messages'), (snapshot) => {
+        let unsubscribeMessages: Function = onSnapshot(query(collection(db, 'messages'), orderBy('createdAt')), (snapshot) => {
             snapshot.forEach(message => {
                 messagesData = {
                     ...messagesData,

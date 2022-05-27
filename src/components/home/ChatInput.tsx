@@ -1,5 +1,5 @@
 import React, { BaseSyntheticEvent, useContext, useState } from 'react'
-import { collection, addDoc } from 'firebase/firestore'
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore'
 import { db } from '../../firebase'
 import sendIcon from '../../images/send.png'
 import '../../styles/ChatInput.scss'
@@ -18,7 +18,8 @@ const ChatInput = () => {
         if(value.length === 0) return
         await addDoc(collection(db, 'messages'), {
             uid: currentUser.uid,
-            message: value
+            message: value,
+            createdAt: serverTimestamp(),
         })
         setValue('')
     }
