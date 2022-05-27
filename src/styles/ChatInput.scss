@@ -1,9 +1,12 @@
 .chatInput{
+    display: flex;
+    align-items: center;
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
     box-shadow: 0 0 8px 0 #000;
+    background-color: #111;
 
     input{
         width: 100%;
@@ -11,17 +14,14 @@
         font-size: 16px;
         color: #fff;
         padding: 0 12px;
-        background-color: #111;
         border: none;
+        background-color: inherit;
     }
 
     .send{
         width: 25px;
         height: 25px;
-        position: absolute;
-        right: 12px;
-        top: 50%;
-        transform: translateY(-50%);
+        margin: 0 12px;
 
         img{
             width: 100%;
