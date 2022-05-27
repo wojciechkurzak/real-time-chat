@@ -14,7 +14,8 @@ const ChatInput = () => {
         setValue(e.target.value)
     }
 
-    const sendMessage = async () => {
+    const sendMessage = async (e: BaseSyntheticEvent): Promise<void> => {
+        e.preventDefault()
         if(value.length === 0) return
         await addDoc(collection(db, 'messages'), {
             uid: currentUser.uid,
@@ -25,12 +26,12 @@ const ChatInput = () => {
     }
 
     return (
-        <div className='chatInput'>
+        <form className='chatInput' onSubmit={sendMessage}>
             <input type='text' placeholder='Type here...' value={value} onChange={handleChange}/>
-            <div className='send' onClick={sendMessage}>
+            <button type='submit'>
                 <img src={sendIcon} alt="send" />
-            </div>
-        </div>
+            </button>
+        </form>
     )
 }
 
