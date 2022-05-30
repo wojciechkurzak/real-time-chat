@@ -1,7 +1,7 @@
 import { BaseSyntheticEvent, useState } from 'react'
 import { registerInputs } from './RegisterInputs'
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
-import { doc, setDoc } from "firebase/firestore"; 
+import { collection, doc, getDocs, setDoc, writeBatch } from "firebase/firestore"; 
 import { auth, db } from '../../firebase'
 import FormInput from '../utils/FormInput'
 import { useNavigate } from 'react-router-dom'
@@ -16,7 +16,7 @@ const Register = () => {
             value: '',
             error: false,
         },
-        nickname:{
+        username:{
             value: '',
             error: false,
         },
@@ -28,7 +28,8 @@ const Register = () => {
             value: '',
             error: false,
         },
-        error: false,
+        emailError: false,
+        usernameError: false
     })
 
     const navigate = useNavigate()
@@ -36,15 +37,18 @@ const Register = () => {
     const signUp = (): void => {
         createUserWithEmailAndPassword(auth, values.email.value, values.password.value)
             .then(async userCred => {
-                await setDoc(doc(db, 'users', userCred.user.uid), {
-                    displayName: values.nickname.value,
+                const batch = writeBatch(db)
+                batch.set(doc(db, 'users', userCred.user.uid), {
+                    displayName: values.username.value,
                     imageURL: ''
                 })
+                batch.set(doc(db, 'usernames', values.username.value), {})
+                await batch.commit()
                 return userCred
             })
             .then(userCred => {
                 updateProfile(userCred.user, {
-                    displayName: values.nickname.value
+                    displayName: values.username.value
                 })
                 .then(() => {
                     navigate('/')
@@ -59,7 +63,7 @@ const Register = () => {
                         value: '',
                         error: false
                     },
-                    nickname: {
+                    username: {
                         value: '',
                         error: false
                     },
@@ -71,7 +75,8 @@ const Register = () => {
                         value: '',
                         error: false
                     },
-                    error: true
+                    emailError: true,
+                    usernameError: false
                 })
             })
     }
@@ -86,17 +91,51 @@ const Register = () => {
         })
     }
 
-    const handleSubmit = (e: BaseSyntheticEvent): void => {
+    const handleSubmit = async (e: BaseSyntheticEvent): Promise<void> => {
         e.preventDefault()
         const emailRegex =  /[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,8}/
-        const nicknameRegex = /^[a-zA-Z0-9]{3,16}$/
+        const usernameRegex = /^[a-zA-Z0-9]{3,16}$/
         const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,}$/
 
         if(emailRegex.test(values.email.value) 
             && passwordRegex.test(values.password.value) 
             && values.confirmPassword.value === values.password.value
-            && nicknameRegex.test(values.nickname.value)){
-            signUp()
+            && usernameRegex.test(values.username.value)){
+                const usernamesSnap = await getDocs(collection(db, 'usernames'))
+                let isValid: boolean = true
+
+                usernamesSnap.forEach((doc) => {
+                    if(doc.id.toLowerCase() === values.username.value.toLowerCase()){
+                        isValid = false
+                    }
+                })
+                
+                if(isValid){
+                    signUp()
+                }
+                else{
+                    setValues({
+                        email: {
+                            value: '',
+                            error: false
+                        },
+                        username: {
+                            value: '',
+                            error: false
+                        },
+                        password: {
+                            value: '',
+                            error: false
+                        },
+                        confirmPassword: {
+                            value: '',
+                            error: false
+                        },
+                        emailError: false,
+                        usernameError: true
+                    })
+                }
+                
         }
         else{
             setValues({
@@ -104,9 +143,9 @@ const Register = () => {
                     ...values.email,
                     error: !emailRegex.test(values.email.value)
                 },
-                nickname: {
-                    ...values.nickname,
-                    error: !nicknameRegex.test(values.nickname.value)
+                username: {
+                    ...values.username,
+                    error: !usernameRegex.test(values.username.value)
                 },
                 password: {
                     ...values.password,
@@ -116,7 +155,8 @@ const Register = () => {
                     ...values.confirmPassword,
                     error: values.confirmPassword.value === values.password.value ? false : true
                 },
-                error: false
+                emailError: false,
+                usernameError: false
             })
         }
         
@@ -125,7 +165,8 @@ const Register = () => {
     return (
         <div className='formPanel'>
             <form onSubmit={handleSubmit}>
-                {values.error && <span>Email already taken</span>}
+                {values.emailError && <span>Email already taken</span>}
+                {values.usernameError && <span>Username already taken</span>}
                 {registerInputs.map((input) => 
                                         <FormInput 
                                             key={input.id} 

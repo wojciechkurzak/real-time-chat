@@ -10,10 +10,10 @@ export const registerInputs: Array<RegisterValidator> = [
     },
     {
         id: 2,
-        name: 'nickname',
+        name: 'username',
         type: 'text',
-        label: 'Nickname',
-        errorMessage: 'Nickname must have 3 to 16 letters',
+        label: 'Username',
+        errorMessage: 'Username must have 3 to 16 letters',
     },
     {
         id: 3,
