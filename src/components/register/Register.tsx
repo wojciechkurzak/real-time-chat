@@ -95,7 +95,7 @@ const Register = () => {
         e.preventDefault()
         const emailRegex =  /[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,8}/
         const usernameRegex = /^[a-zA-Z0-9]{3,16}$/
-        const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,}$/
+        const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z\d@$!%*#?&-^_]{6,}$/
 
         if(emailRegex.test(values.email.value) 
             && passwordRegex.test(values.password.value) 
