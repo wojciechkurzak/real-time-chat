@@ -1,15 +1,10 @@
-.imageTop{
-    width: 400px;
-    position: absolute;
-    top: -40px;
-    left: -110px;
-    z-index: -1;
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.imageBottom{
-    width: 400px;
-    position: absolute;
-    bottom: -100px;
-    right: -50px;
-    z-index: -1;
+body{
+    background-color: #1C1C1C;
+    font-family: 'Roboto', sans-serif;
 }

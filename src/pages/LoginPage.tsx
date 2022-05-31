@@ -1,13 +1,13 @@
 import Login from '../components/login/Login'
-import image1 from '../images/vector1.png'
-import image2 from '../images/vector2.png'
+import imageBottom from '../images/stain-bottom.svg'
+import imageTop from '../images/stain-top.svg'
 import '../styles/FormPage.scss'
 
 const LoginPage = () => {
     return (
         <div className='formPage'>
-            <img className='imageBottom' src={image1} alt='loginimage'></img>
-            <img className='imageTop' src={image2}alt='loginimage'></img>
+            <img className='imageBottom' src={imageBottom} alt='loginimage'></img>
+            <img className='imageTop' src={imageTop} alt='loginimage'></img>
             <Login />
         </div>
     )

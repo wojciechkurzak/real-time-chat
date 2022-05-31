@@ -6,3 +6,19 @@
     height: 100vh;
     overflow: hidden;
 }
+
+.imageTop{
+    width: 500px;
+    position: absolute;
+    top: -80px;
+    left: -160px;
+    z-index: -1;
+}
+
+.imageBottom{
+    width: 650px;
+    position: absolute;
+    bottom: -120px;
+    right: -300px;
+    z-index: -1;
+}
