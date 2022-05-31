@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
 import { db } from '../firebase'
 import Chat from '../components/home/Chat'
@@ -9,8 +9,11 @@ import '../styles/HomePage.scss'
 
 const HomePage = () => {
     const [slide, setSlide] = useState(false)
+    const [isLoadingData, setIsLoadingData] = useState(true)
     const [users, setUsers] = useState(null)
     const [messages, setMessages] = useState(null)
+
+    const bottomOfPage = useRef(null)
 
     useEffect(() => {
         let usersData : Array<Object> = []
@@ -35,12 +38,24 @@ const HomePage = () => {
             })
             setMessages(messagesData)
         })
-
         return () => {
             unsubscribeUsers()
             unsubscribeMessages()
         }
     }, [])
+
+    useEffect(() => {
+        if(isLoadingData){
+            bottomOfPage.current.scrollIntoView()
+
+            if(messages !== null){
+                setIsLoadingData(false)
+            }
+        }
+        else{
+            bottomOfPage.current.scrollIntoView({behavior: 'smooth'})
+        }
+    }, [messages])
 
     return (
         <div className='homePage'>
@@ -50,6 +65,7 @@ const HomePage = () => {
                 <Chat users={users} messages={messages} />
                 <ChatInput />
             </div>
+            <div ref={bottomOfPage}></div>
         </div>
     )
 }
