@@ -1,4 +1,4 @@
-import { BaseSyntheticEvent, useContext, useState } from 'react'
+import { BaseSyntheticEvent, useContext, useEffect, useRef, useState } from 'react'
 import { AuthContext } from '../utils/AuthProvider'
 import '../../styles/ChangeUsername.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -13,6 +13,14 @@ const ChangeUsername = () => {
     const [value, setValue] = useState(currentUser.displayName)
     const [edit, setEdit] = useState(false)
     const [error, setError] = useState(null)
+
+    const inputRef = useRef(null)
+
+    useEffect(() => {
+        if(edit){
+            inputRef.current.focus()
+        }
+    }, [edit])
 
     const cancelEdit = (): void => {
         setEdit(false)
@@ -67,7 +75,7 @@ const ChangeUsername = () => {
         <div className='changeUsername'>
             <form onSubmit={handleSubmit}>
                     <span>{error}</span>
-                    <input type='text' onChange={(e) => setValue(e.target.value)} value={value} disabled={!edit}></input>
+                    <input type='text' ref={inputRef} onChange={(e) => setValue(e.target.value)} value={value} disabled={!edit}></input>
                     {!edit && <FontAwesomeIcon icon={faPenToSquare} onClick={() => setEdit(true)}/>}
                     {edit && <div className='buttons'>
                         <button className='save' type='submit'>Save</button>
