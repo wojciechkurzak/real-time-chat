@@ -64,19 +64,17 @@ const ChangeUsername = () => {
     }
 
     return (
-        <li>
+        <div className='changeUsername'>
             <form onSubmit={handleSubmit}>
-                <div className='changeUsername'>
                     <span>{error}</span>
                     <input type='text' onChange={(e) => setValue(e.target.value)} value={value} disabled={!edit}></input>
                     {!edit && <FontAwesomeIcon icon={faPenToSquare} onClick={() => setEdit(true)}/>}
                     {edit && <div className='buttons'>
-                            <button className='save' type='submit'>Save</button>
-                            <button className='cancel' onClick={cancelEdit}>Cancel</button>
-                        </div>}
-                </div>
+                        <button className='save' type='submit'>Save</button>
+                        <button className='cancel' onClick={cancelEdit}>Cancel</button>
+                    </div>}
             </form>
-        </li>
+        </div>
     )
 }
 

@@ -1,7 +1,7 @@
-import React from 'react'
 import { auth } from '../../firebase'
 import { signOut } from 'firebase/auth'
 import { useNavigate } from 'react-router'
+import '../../styles/Signout.scss'
 
 const Signout = () => {
     const navigate = useNavigate()
@@ -15,7 +15,7 @@ const Signout = () => {
     }
 
     return (
-        <li onClick={signout}>Signout</li>
+        <div className='signout' onClick={signout}>Signout</div>
     )
 }
 

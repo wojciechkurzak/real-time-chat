@@ -1,12 +1,14 @@
 .menu{
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
     position: fixed;
     top: 0;
     left: 100%;
     width: 100vw;
     height: 100vh;
+    padding: 80px 0;
     background-color: #111;
     transition: transform .3s;
     z-index: 2;
@@ -20,15 +22,6 @@
 
         img{
             width: 100%;
-        }
-    }
-
-    ul{
-        list-style-type: none;
-
-        li{
-            color: #fff;
-            font-size: 32px;
         }
     }
 }
