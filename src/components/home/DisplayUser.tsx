@@ -7,7 +7,7 @@ const DisplayUser = () => {
 
     return (
         <div className='user'>
-            <img src={defaulticon} alt="userIcon" />
+            <img src={currentUser.photoURL === null ? defaulticon : currentUser.photoURL} alt="userIcon" />
             <span>{currentUser.displayName}</span>
         </div>
     )
