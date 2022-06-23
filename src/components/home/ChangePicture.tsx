@@ -15,8 +15,6 @@ const ChangePicture = () => {
     const [imageURL, setImageURL] = useState(currentUser.photoURL)
     const [file, setFile] = useState(null)
 
-    console.log('render')
-
     const handleChange = (e: BaseSyntheticEvent): void => {
         if(e.target.files.length !== 0){
             setFile(e.target.files[0])
