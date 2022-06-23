@@ -1,11 +1,11 @@
 import React from 'react'
-import defaultIcon from '../../images/defaulticon.png'
+import defaulticon from '../../images/defaulticon.png'
 import '../../styles/ChatMessage.scss'
 
 const ChatMessage = ({displayName, imageURL, message}: {displayName: String, imageURL: String, message: String}) => {
     return (
         <div className='message'>
-            <img src={defaultIcon} alt="default" />
+            <img src={imageURL === '' ? defaulticon : imageURL} alt="userIcon" />
             <div className='text'>
                 <p>{displayName}</p>
                 <p>{message}</p>
