@@ -1,7 +1,7 @@
-import React from 'react'
 import closeIcon from '../../images/iks2.png'
 import '../../styles/Menu.scss'
 import ChangeUsername from './ChangeUsername'
+import ChangePicture from './ChangePicture'
 import Signout from './Signout'
 
 const Menu = ({slide, setSlide}: {slide: boolean, setSlide: Function}) => {
@@ -10,6 +10,7 @@ const Menu = ({slide, setSlide}: {slide: boolean, setSlide: Function}) => {
             <div className='menuClose' onClick={() => setSlide(!slide)}>
                 <img src={closeIcon} alt="close" />
             </div>
+            <ChangePicture />
             <ChangeUsername />
             <Signout />
         </div>
