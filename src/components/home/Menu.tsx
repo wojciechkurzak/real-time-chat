@@ -1,4 +1,5 @@
-import closeIcon from '../../images/iks2.png'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faXmark } from '@fortawesome/free-solid-svg-icons'
 import '../../styles/Menu.scss'
 import ChangeUsername from './ChangeUsername'
 import ChangePicture from './ChangePicture'
@@ -8,7 +9,7 @@ const Menu = ({slide, setSlide}: {slide: boolean, setSlide: Function}) => {
     return (
         <div className={slide ? 'menu menuOut' : 'menu'}>
             <div className='menuClose' onClick={() => setSlide(!slide)}>
-                <img src={closeIcon} alt="close" />
+                <FontAwesomeIcon icon={faXmark} />
             </div>
             <div>
                 <ChangePicture />
