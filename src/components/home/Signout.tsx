@@ -1,6 +1,8 @@
 import { auth } from '../../firebase'
 import { signOut } from 'firebase/auth'
 import { useNavigate } from 'react-router'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons'
 import '../../styles/Signout.scss'
 
 const Signout = () => {
@@ -15,7 +17,7 @@ const Signout = () => {
     }
 
     return (
-        <div className='signout' onClick={signout}>Signout</div>
+        <div className='signout' onClick={signout}>Signout<FontAwesomeIcon icon={faArrowRightFromBracket} /></div>
     )
 }
 

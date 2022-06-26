@@ -1,4 +1,12 @@
 .signout{
     color: #fff;
     font-size: 32px;
+
+    svg{
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #fe6464;
+        margin-left: 12px;
+    }
 }
