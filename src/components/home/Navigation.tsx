@@ -1,14 +1,15 @@
 import React from 'react'
 import DisplayUser from './DisplayUser'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faGear } from '@fortawesome/free-solid-svg-icons'
 import '../../styles/Navigation.scss'
-import settings from '../../images/settingsicon.png'
 
 const Navigation = ({slide, setSlide}: {slide: boolean, setSlide: Function}) => {
     return (
         <nav className='navigation'>
             <DisplayUser />
-            <div className='settingsIcon' onClick={() => setSlide(!slide)}>
-                <img src={settings} alt='settings' />
+            <div className='menuIcon' onClick={() => setSlide(!slide)}>
+                <FontAwesomeIcon icon={faGear} />
             </div>
         </nav>
     )
