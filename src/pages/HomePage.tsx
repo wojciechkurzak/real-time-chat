@@ -9,11 +9,8 @@ import '../styles/HomePage.scss'
 
 const HomePage = () => {
     const [slide, setSlide] = useState(false)
-    const [isLoadingData, setIsLoadingData] = useState(true)
     const [users, setUsers] = useState(null)
     const [messages, setMessages] = useState(null)
-
-    const bottomOfPage = useRef(null)
 
     useEffect(() => {
         let usersData : Array<Object> = []
@@ -44,19 +41,6 @@ const HomePage = () => {
         }
     }, [])
 
-    useEffect(() => {
-        if(isLoadingData){
-            bottomOfPage.current.scrollIntoView()
-
-            if(messages !== null){
-                setIsLoadingData(false)
-            }
-        }
-        else{
-            bottomOfPage.current.scrollIntoView({behavior: 'smooth'})
-        }
-    }, [messages])
-
     return (
         <div className='homePage'>
             <Navigation slide={slide} setSlide={setSlide}/>
@@ -65,7 +49,6 @@ const HomePage = () => {
                 <Chat users={users} messages={messages} />
                 <ChatInput />
             </div>
-            <div ref={bottomOfPage}></div>
         </div>
     )
 }
