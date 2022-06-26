@@ -10,8 +10,10 @@ const Menu = ({slide, setSlide}: {slide: boolean, setSlide: Function}) => {
             <div className='menuClose' onClick={() => setSlide(!slide)}>
                 <img src={closeIcon} alt="close" />
             </div>
-            <ChangePicture />
-            <ChangeUsername />
+            <div>
+                <ChangePicture />
+                <ChangeUsername />
+            </div>
             <Signout />
         </div>
     )
