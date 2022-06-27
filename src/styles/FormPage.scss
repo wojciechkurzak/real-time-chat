@@ -22,3 +22,17 @@
     right: -300px;
     z-index: -1;
 }
+
+@media only screen and (min-width: 768px){
+    .imageTop{
+        width: 800px;
+        top: -140px;
+        left: -260px;
+    }
+
+    .imageBottom{
+        width: 950px;
+        bottom: -180px;
+        right: -400px;
+    }
+}
