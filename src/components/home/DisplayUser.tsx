@@ -2,7 +2,7 @@ import { useContext } from 'react'
 import { AuthContext } from '../utils/AuthProvider'
 import defaulticon from '../../images/defaulticon.png'
 
-const DisplayUser = ({users}: {users: any}) => {
+const DisplayUser = ({users}: {users: Array<any>}) => {
     const currentUser = useContext(AuthContext)
 
     return (
