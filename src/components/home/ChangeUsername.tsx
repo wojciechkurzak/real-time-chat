@@ -1,11 +1,11 @@
 import { BaseSyntheticEvent, useContext, useEffect, useRef, useState } from 'react'
 import { AuthContext } from '../utils/AuthProvider'
-import '../../styles/ChangeUsername.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons'
 import { collection, doc, getDocs, writeBatch } from 'firebase/firestore'
 import { auth, db } from '../../firebase'
 import { updateProfile } from 'firebase/auth'
+import '../../styles/ChangeUsername.scss'
 
 const ChangeUsername = () => {
     const currentUser = useContext(AuthContext)

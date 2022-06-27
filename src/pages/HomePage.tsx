@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect} from 'react'
 import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
 import { db } from '../firebase'
 import Chat from '../components/home/Chat'
@@ -43,7 +43,7 @@ const HomePage = () => {
 
     return (
         <div className='homePage'>
-            <Navigation slide={slide} setSlide={setSlide}/>
+            <Navigation slide={slide} setSlide={setSlide} users={users}/>
             <Menu slide={slide} setSlide={setSlide}/>
             <div className='chatBox'>
                 <Chat users={users} messages={messages} />

@@ -6,8 +6,8 @@ import { AuthContext } from '../utils/AuthProvider'
 import defaulticon from '../../images/defaulticon.png'
 import { updateDoc, doc } from "firebase/firestore";
 import { auth, db } from '../../firebase'
-import '../../styles/ChangePicture.scss'
 import { updateProfile } from "firebase/auth";
+import '../../styles/ChangePicture.scss'
 
 const ChangePicture = () => {
     const currentUser = useContext(AuthContext)
