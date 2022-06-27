@@ -19,6 +19,7 @@
         top: 10px;
         width: 30px;
         height: 30px;
+        cursor: pointer;
 
         svg{
             font-size: 40px;
@@ -29,4 +30,14 @@
 
 .menuOut{
     transform: translateX(-100%);
+}
+
+@media only screen and (min-width: 768px){
+    .menu{
+        width: 420px;
+    }
+
+    .menuOut{
+        box-shadow: 0 0 14px 0 #000;
+    }
 }

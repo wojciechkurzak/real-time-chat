@@ -25,6 +25,7 @@
 
             svg{
                 font-size: 20px;
+                cursor: pointer;
             }
         }
 
@@ -34,6 +35,8 @@
             border-radius: 100%;
             object-fit: cover;
             object-position: center;
+            pointer-events: none;
+            user-select: none;
         }
 
         .buttons{
@@ -55,10 +58,12 @@
         
             .save{
                 background-color: #00cc99;
+                cursor: pointer;
             }
         
             .cancel{
                 background-color: #fe6464;
+                cursor: pointer;
             }
         }
     }
