@@ -1,7 +1,7 @@
-import React, { BaseSyntheticEvent, useContext, useState } from 'react'
+import { BaseSyntheticEvent, useContext, useState } from 'react'
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore'
 import { db } from '../../firebase'
-import sendIcon from '../../images/send.png'
+import sendIcon from '../../images/send.svg'
 import '../../styles/ChatInput.scss'
 import { AuthContext } from '../utils/AuthProvider'
 
