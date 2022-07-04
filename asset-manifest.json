@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/react-chat/static/css/main.2d6ca648.css",
+    "main.js": "/react-chat/static/js/main.acd1cc68.js",
+    "static/media/logo.svg": "/react-chat/static/media/logo.1d7ce806a05b2b434c9e9fd786017fb5.svg",
+    "static/media/send.svg": "/react-chat/static/media/send.48a1f51549aff27db6112a35d36c6eac.svg",
+    "static/media/stain-top.svg": "/react-chat/static/media/stain-top.4c99569ec96560f561f57ef9b76aab8a.svg",
+    "static/media/stain-bottom.svg": "/react-chat/static/media/stain-bottom.cc5b493687d2d1bbaa1b58e89367e9bd.svg",
+    "index.html": "/react-chat/index.html",
+    "main.2d6ca648.css.map": "/react-chat/static/css/main.2d6ca648.css.map",
+    "main.acd1cc68.js.map": "/react-chat/static/js/main.acd1cc68.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2d6ca648.css",
+    "static/js/main.acd1cc68.js"
+  ]
+}
